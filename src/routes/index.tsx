@@ -30,6 +30,7 @@ function RouteComponent() {
     validators: {
       onChange: zodSchema,
       // onBlur: zodSchema,
+      // onMount: zodSchema
       // onSubmit: zodSchema,
     },
     onSubmit: async (form: { value: z.infer<typeof zodSchema> }) => {
@@ -106,23 +107,6 @@ function RouteComponent() {
           }}>
           {(field) => <field.TanstackInput label="Name" className="border-2" />}
         </form.AppField> */}
-
-        {/* You also can write like this but not recommended */}
-        {/* <form.Field name="age">
-              {(field) => (
-                <div className="flex flex-col">
-                  <label>Age</label>
-                  <input
-                    id={field.name}
-                    name={field.name}
-                    value={field.state.value}
-                    onBlur={field.handleBlur}
-                    onChange={(e) => field.handleChange(e.target.value)}
-                    className="border"
-                  />
-                </div>
-              )}
-            </form.Field> */}
 
         <form.Subscribe
           selector={(state) => [state.canSubmit, state.isSubmitting]}

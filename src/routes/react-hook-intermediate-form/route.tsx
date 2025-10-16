@@ -1,5 +1,5 @@
 import { ReactHookFormIntermediateButton } from "@/components/react-hook-intermediate-button";
-import CreateRHFInput from "@/lib/CreateRHFInput";
+import { ReactHookFormIntermediateInput } from "@/components/react-hook-intermediate-input";
 import { db } from "@/lib/utils";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -32,8 +32,9 @@ function RouteComponent() {
 
   const methods = useForm<TUserForm>({
     defaultValues: { username: "", email: "" },
-    mode: "onSubmit",
+    mode: "onChange",
     resolver: zodResolver(zodSchema),
+    // reValidateMode: "onChange",
   });
 
   const onSubmit = async (data: TUserForm) => {
@@ -44,15 +45,21 @@ function RouteComponent() {
     });
   };
 
-  const UserInput = CreateRHFInput<TUserForm>();
-
   return (
     <FormProvider {...methods}>
       <form
         onSubmit={methods.handleSubmit(onSubmit)}
         className="flex flex-col items-center justify-center">
-        <UserInput name="username" label="用户名" placeholder="输入用户名" />
-        <UserInput name="email" label="邮箱" placeholder="输入邮箱" />
+        <ReactHookFormIntermediateInput<TUserForm>
+          name="username"
+          label="用户名"
+          placeholder="输入用户名"
+        />
+        <ReactHookFormIntermediateInput<TUserForm>
+          name="email"
+          label="邮箱"
+          placeholder="输入邮箱"
+        />
         <ReactHookFormIntermediateButton>
           Submit
         </ReactHookFormIntermediateButton>

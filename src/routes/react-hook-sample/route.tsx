@@ -33,6 +33,7 @@ export const Route = createFileRoute("/react-hook-sample")({
 function RouteComponent() {
   const { control, handleSubmit } = useForm({
     defaultValues: { username: "", age: "" },
+    mode: "onChange",
     resolver: zodResolver(zodSchema),
     // resolver: yupResolver(yupSchema),
   });
