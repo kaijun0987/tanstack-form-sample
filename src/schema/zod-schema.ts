@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const zodSchema = z.object({
-  name: z.string().min(5),
+  name: z.string(),
   age: z.string().min(5),
 });
 

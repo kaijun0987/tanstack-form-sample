@@ -26,7 +26,7 @@ function RouteComponent() {
     defaultValues: {
       name: "",
       age: "",
-    } as z.infer<typeof zodSchema>,
+    },
     validators: {
       onChange: zodSchema,
       // onBlur: zodSchema,
@@ -51,6 +51,7 @@ function RouteComponent() {
   //     // onSubmit: yupSchema,
   //     // onBlurAsync: zodSchema,
   //     // onChange: zodSchema,
+  //     // onChange: valibotSchema,
   //     onMount: zodSchema,
   //     onSubmit: zodSchema,
   //   },
